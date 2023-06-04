@@ -102,7 +102,114 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    let consoleLog = errorBtns[0]
+    consoleLog.addEventListener("click", function(){
+      console.log("Console log");
+    });
+    let consoleError = errorBtns[1]
+    consoleError.addEventListener("click", function(){
+      console.error("Console error");
+    });
+    let consoleCount = errorBtns[2]
+    consoleCount.addEventListener("click", function(){
+      console.count();
+    });
+    let consoleWarn = errorBtns[3]
+    consoleWarn.addEventListener("click", function(){
+      console.warn("Console warn");
+    });
+    let consoleAssert = errorBtns[4]
+    consoleAssert.addEventListener("click", function(){
+      console.assert(false);
+    });
+    let consoleClear = errorBtns[5]
+    consoleClear.addEventListener("click", function(){
+      console.clear();
+    });
+    let consoleDir = errorBtns[6]
+    consoleDir.addEventListener("click", function(){
+      console.dir(document.location);
+    });
+    let consoleDirxml = errorBtns[7]
+    consoleDirxml.addEventListener("click", function(){
+      console.dirxml(document.location);
+    });
+    let consoleGroupStart = errorBtns[8]
+    consoleGroupStart.addEventListener("click", function(){
+      console.group();
+    });
+    let consoleGroupEnd = errorBtns[9]
+    consoleGroupEnd.addEventListener("click", function(){
+      console.groupEnd();
+    });
+    let consoleTable = errorBtns[10]
+    consoleTable.addEventListener("click", function(){
+      console.table(document.location);
+    });
+    let startTimer = errorBtns[11]
+    startTimer.addEventListener("click", function(){
+      console.time();
+    });
+    let endTimer = errorBtns[12]
+    endTimer.addEventListener("click", function(){
+      console.timeEnd();
+    });
+    let consoleTrace = errorBtns[13]
+    consoleTrace.addEventListener("click", function(){
+      console.trace();
+    });
+    let globalError = errorBtns[14]
+    globalError.addEventListener("click", function(){
+        throw new Error('error triggered');
+    });
+
+    function error() {
+      let number = 1;
+      if (number != 0){
+        throw new Error();
+      }
+    }
+    try {
+      errorFunction();
+    }
+    catch(error) {
+      console.error(error);
+    }
+    finally {
+      console.log("finally");
+    }
+
+    class ValidationError extends Error{
+      constructor(message){
+        super(message);
+        this.name = "ValidationError";
+      }
+    }
+
+    function test() {
+      throw new ValidationError("Whoops!");
+    }
+
+    try{
+      test();
+    } catch(err){
+      console.error(err.name + " " + err.message);
+    }
+    
+    window.onerror = (error) => {
+        console.log(error);
+    }
   </script>
+
+<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "3dbf52fa0acf45edb5eff845df0090d4"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+                        
 </body>
 
 </html>
